@@ -24,7 +24,8 @@ app.get('/', function (req:express.Request, res:express.Response):void {
 
 // Color Page
 app.get('/:color', function (req, res) {
-    let myColor = req.params.color
+    let myColor:unknown = req.params.color
+    if (typeof (myColor) === 'string')
     res.send(`
         <body style="margin: 0;">
             <div style="border: 1px solid black; height: 10vh; background-color: ${myColor};">
